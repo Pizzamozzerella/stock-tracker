@@ -1,0 +1,109 @@
+.companyContainer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px;
+}
+
+.companyHeader {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.companyName {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #000000;
+    font-family: 'Georgia', serif;
+}
+
+.symbol {
+    font-size: 1rem;
+    color: #000000;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+}
+
+.description {
+    font-size: 0.95rem;
+    color: #000000;
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 700px;
+}
+
+.statsRow {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.statLabel {
+    font-size: 0.75rem;
+    color: #000000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.statValue {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000000;
+}
+.tickerContainer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px 40px 24px;
+}
+
+.tickerRow {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.date {
+    font-size: 0.95rem;
+    font-family: 'Courier New', monospace;
+    color: #000000;
+    width: 110px;
+    flex-shrink: 0;
+}
+
+.price {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #000000;
+}
+
+.volume {
+    font-size: 0.85rem;
+    color: #000000;
+}
+
+.positive {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: green;
+}
+
+.negative {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: red;
+}
+
+.noData {
+    color: #999;
+    font-size: 0.9rem;
+    padding: 24px;
+}
