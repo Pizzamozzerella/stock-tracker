@@ -65,7 +65,7 @@ body {
 .market-cap {
     font-size: 0.8rem;
     color: #05ad3d;
-    font-family: 'Courier New', monospace;
+    font-family: 'Georgia', serif;
 }
 .logo {
     width: 52px;
@@ -93,7 +93,7 @@ body {
 .symbol {
     font-size: 1rem;
     color: #05ad3d;
-    font-family: 'Courier New', monospace;
+    font-family: 'Georgia', serif;
     letter-spacing: .25px;
 }
 

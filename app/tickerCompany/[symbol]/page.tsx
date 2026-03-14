@@ -1,5 +1,6 @@
-//d3P64P7FBSVDEPJY3
 import styles from './page.module.css'
+import Link from 'next/link';
+
 interface PageProps{
     params: {
         symbol: string;
@@ -138,16 +139,19 @@ const CompanyOverviewList =  ({company }: {company: CompanyOverview }) => {
 
 
 export default async function Home({ params }: PageProps) {
-        const{ symbol } = await params;
-        const [company, tickerData] = await Promise.all([
+ const { symbol } = await params;
+    const [company, tickerData] = await Promise.all([
         getCompanyOverview(symbol),
         getTickerPricesDaily(symbol),
     ]);
 
-  return (
+    return (
         <div>
-            <CompanyOverviewList company={company}/>
-            <TickerPriceDailysList data={tickerData}/>
+            <Link href="/" className={styles.backButton}>
+                ← Back
+            </Link>
+            <CompanyOverviewList company={company} />
+            <TickerPriceDailysList data={tickerData} />
         </div>
-  );
+    );
 }
