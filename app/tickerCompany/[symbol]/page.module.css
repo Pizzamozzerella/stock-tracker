@@ -14,20 +14,20 @@
 .companyName {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #000000;
+    color: #d1d1d1;
     font-family: 'Georgia', serif;
 }
 
 .symbol {
     font-size: 1rem;
-    color: #000000;
+    color: #d1d1d1;
     font-family: 'Courier New', monospace;
     letter-spacing: 1px;
 }
 
 .description {
     font-size: 0.95rem;
-    color: #000000;
+    color: #d1d1d1;
     line-height: 1.7;
     margin-bottom: 32px;
     max-width: 700px;
@@ -47,7 +47,7 @@
 
 .statLabel {
     font-size: 0.75rem;
-    color: #000000;
+    color: #d1d1d1;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -55,7 +55,7 @@
 .statValue {
     font-size: 1rem;
     font-weight: 600;
-    color: #000000;
+    color: #d1d1d1;
 }
 .tickerContainer {
     max-width: 900px;
@@ -74,7 +74,7 @@
 .date {
     font-size: 0.95rem;
     font-family: 'Courier New', monospace;
-    color: #000000;
+    color: #d1d1d1;
     width: 110px;
     flex-shrink: 0;
 }
@@ -82,12 +82,12 @@
 .price {
     font-size: 0.95rem;
     font-weight: 600;
-    color: #000000;
+    color: #d1d1d1;
 }
 
 .volume {
     font-size: 0.85rem;
-    color: #000000;
+    color: #d1d1d1;
 }
 
 .positive {

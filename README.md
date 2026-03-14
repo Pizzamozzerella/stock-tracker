@@ -1,36 +1,25 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# STOCKTRACKER
 
-## Getting Started
+a Next.js app that uses the AlphaAdvantge API to fetch data about a company's stock ticker and a basic 
+overview of the company. The user clicks on the company's card on the homepage and is then sent
+to their respective information page containing the tickers information.
 
-First, run the development server:
+# GETTING STARTED
 
-```bash
+git clone https://github.com/Pizzamozzerella/stocktracker.git
+cd stocktracker
+
+## 2. Install dependencies
+npm install
+
+### 3. Set up environment variables
+Copy the example env file and fill in your API key:
+cp .env.example .env.local
+
+Get a free API key at https://www.alphavantage.co/support/#api-key
+then open .env.local and replace your_key_here with your actual key.
+
+### 4. Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open http://localhost:3000 in your browser.

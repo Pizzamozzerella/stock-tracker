@@ -22,6 +22,8 @@ interface CompanyOverview {
     Country: string;
     Sector: string;
     Industry: string;
+    MarketCapitalization: string;
+    AssetType: string;
 }
 interface TickerResponse {
     "Meta Data": Record<string, string>;
@@ -30,7 +32,7 @@ interface TickerResponse {
 
 const getTickerPricesDaily = async (symbol: string): Promise<TickerResponse> => {
 
-    const res = await fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=demo`);
+    const res = await fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${process.env.ALPHA_VANTAGE_API_KEY}`);
 
     if (!res.ok) {
         throw new Error('Could not retrieve prices');
@@ -40,7 +42,7 @@ const getTickerPricesDaily = async (symbol: string): Promise<TickerResponse> => 
 const TickerPriceDailysList = ({ data }: { data: TickerResponse }) => {
     const timeSeries = data["Time Series (Daily)"];
     if (!timeSeries) {
-        return <p className={styles.noData}>No Ticker Data Available</p>;
+        return <p className={styles.noData}>No data Available. N/A</p>;
     }
 
     const entries = Object.entries(timeSeries);
@@ -55,11 +57,27 @@ const TickerPriceDailysList = ({ data }: { data: TickerResponse }) => {
                     ? (((currentClosePrice - prevClosePrice) / prevClosePrice) * 100).toFixed(2)
                     : null;
 
+                const isMostRecent = index === 0;
+
                 return (
                     <div key={date} className={styles.tickerRow}>
                         <span className={styles.date}>{date}</span>
-                        <span className={styles.price}>Close: {values["4. close"]}</span>
-                        <span className={styles.volume}>Vol: {values["5. volume"]}</span>
+
+                        {isMostRecent ? (
+                            <>
+                                <span className={styles.price}>Open: ${parseFloat(values["1. open"]).toFixed(2)}</span>
+                                <span className={styles.price}>High: ${parseFloat(values["2. high"]).toFixed(2)}</span>
+                                <span className={styles.price}>Low: ${parseFloat(values["3. low"]).toFixed(2)}</span>
+                                <span className={styles.price}>Close: ${parseFloat(values["4. close"]).toFixed(2)}</span>
+                                <span className={styles.volume}>Vol: {parseInt(values["5. volume"]).toLocaleString()}</span>
+                            </>
+                        ) : (
+                            <>
+                                <span className={styles.price}>Close: ${parseFloat(values["4. close"]).toFixed(2)}</span>
+                                <span className={styles.volume}>Vol: {parseInt(values["5. volume"]).toLocaleString()}</span>
+                            </>
+                        )}
+
                         {percentChange !== null && (
                             <span className={Number(percentChange) >= 0 ? styles.positive : styles.negative}>
                                 {Number(percentChange) >= 0 ? "+" : ""}{percentChange}%
@@ -74,7 +92,7 @@ const TickerPriceDailysList = ({ data }: { data: TickerResponse }) => {
 
 const getCompanyOverview = async (symbol: string): Promise<CompanyOverview>  => {
 
-    const res = await fetch(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${symbol}&apikey=demo`);
+    const res = await fetch(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${symbol}&apikey=${process.env.ALPHA_VANTAGE_API_KEY}`);
 
     if(!res.ok){
         throw new Error('Count not retrieve company');
@@ -97,6 +115,10 @@ const CompanyOverviewList =  ({company }: {company: CompanyOverview }) => {
                         <span className={styles.statValue}>{company.Exchange}</span>
                     </div>
                     <div className={styles.stat}>
+                        <span className={styles.statLabel}>Asset Type</span>
+                        <span className={styles.statValue}>{company.AssetType}</span>
+                    </div>
+                    <div className={styles.stat}>
                         <span className={styles.statLabel}>Sector</span>
                         <span className={styles.statValue}>{company.Sector}</span>
                     </div>
@@ -106,7 +128,7 @@ const CompanyOverviewList =  ({company }: {company: CompanyOverview }) => {
                     </div>
                     <div className={styles.stat}>
                         <span className={styles.statLabel}>Market Cap</span>
-                        <span className={styles.statValue}>{company.MarketCapitalization}</span>
+                        <span className={styles.statValue}>${parseInt(company.MarketCapitalization).toLocaleString()}</span>
                     </div>
                 </div>
             </div>
